@@ -19,12 +19,18 @@ void opcontrol () {
     pros::Motor right_front_wheels (RIGHT_FRONT_WHEELS_PORT);
     pros::Motor left_back_wheels (LEFT_BACK_WHEELS_PORT);
     pros::Motor right_back_wheels (RIGHT_BACK_WHEELS_PORT);
+    pros::Motor lift_left_motor (LEFT_LIFT_PORT, MOTOR_GEARSET_18); // The arm motor has the 200 rpm gearset
+    pros::Motor lift_right_motor (RIGHT_LIFT_PORT, MOTOR_GEARSET_18); // The arm motor has the 200 rpm gearset
+    pros::Motor claw_motor (CLAW_PORT, MOTOR_GEARSET_18); // The arm motor has the 200 rpm gearset
     pros::Controller master (CONTROLLER_MASTER);
     
+
     while (true) {
         tank_drive();
         //split_arcade_drive();
         //arcade_drive();
+        lift();
+        claw();
     }
 }
 
@@ -33,7 +39,7 @@ void tank_drive() {
     right_back_wheels.move(master.get_analog(ANALOG_RIGHT_Y));
     left_front_wheels.move(master.get_analog(ANALOG_LEFT_Y));
 right_front_wheels.move(master.get_analog(ANALOG_RIGHT_Y));
-	
+    	
     pros::delay(20);
 }
 
@@ -61,4 +67,29 @@ void arcade_drive() {
     right_front_wheels.move(master.get_analog(right));
 
     pros::delay(20);
+}
+
+void lift() {
+    if (master.get_digital(DIGITAL_R1)) {
+        lift_left_motor.move_velocity(100);
+        lift_right_motor.move_velocity(100);
+    } else if (master.get_digitial(DIGITAL_R2)) {
+        lift_left_motor.move_velocity(-100);
+        lift_right_motor.move_velocity(-100);
+    } else {
+        lift_left_motor.move_velocity(0);
+        lift_right_motor.move_velocity(0);
+    }
+
+    pros::delay(20);
+}
+
+void claw() {
+    if (master.get_digital(DIGITAL_L1)) {
+        claw_motor.move_velocity(100);
+    } else if (master.get_digitial(DIGITAL_L2)) {
+        claw_motor.move_velocity(-100);
+    } else {
+        claw_motor.move_velocity(0);
+    }
 }

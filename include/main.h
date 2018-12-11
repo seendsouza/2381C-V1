@@ -40,6 +40,9 @@
 #define RIGHT_FRONT_WHEELS_PORT 2
 #define LEFT_BACK_WHEELS_PORT 3
 #define RIGHT_BACK_WHEELS_PORT 4
+#define LEFT_LIFT_PORT 5
+#define RIGHT_LIFT_PORT 6
+#define CLAW_PORT 7
 
 /**
  * You should add more #includes here
