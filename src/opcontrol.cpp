@@ -14,14 +14,6 @@
  * task, not resume it from where it left off.
  */
 
-/* Drive Types:
- * 0 is Tank Drive
- * 1 is Split Arcade Drive
- * 2 is Arcade Drive
- */
-
-int drive_type = 0;
-
 void opcontrol () {
     pros::Motor left_front_wheels (LEFT_FRONT_WHEELS_PORT);
     pros::Motor right_front_wheels (RIGHT_FRONT_WHEELS_PORT);
@@ -30,16 +22,9 @@ void opcontrol () {
     pros::Controller master (CONTROLLER_MASTER);
     
     while (true) {
-        //dev if statement (will be removed at comp)
-        if (drive_type == 0){
-            tank_drive();
-        } else if (drive_type == 1) {
-            split_arcade_drive();
-        } else if (drive_type == 2) {
-            arcade_drive();
-        } else {
-            tank_drive();
-        }
+        tank_drive();
+        //split_arcade_drive();
+        //arcade_drive();
     }
 }
 
