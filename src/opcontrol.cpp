@@ -28,6 +28,12 @@
 int drive_type = 0;
 
 void opcontrol () {
+    pros::Motor left_front_wheels (LEFT_FRONT_WHEELS_PORT);
+    pros::Motor right_front_wheels (RIGHT_FRONT_WHEELS_PORT);
+    pros::Motor left_back_wheels (LEFT_BACK_WHEELS_PORT);
+    pros::Motor right_back_wheels (RIGHT_BACK_WHEELS_PORT);
+    pros::Controller master (CONTROLLER_MASTER):
+    
     while (true) {
         if (drive_type == 0){
             tank_drive()
@@ -38,31 +44,23 @@ void opcontrol () {
 }
 
 void tank_drive() {
-    int left = controller_get_analog(CONTROLLER_MASTER, ANALOG_LEFT_Y);
-    int right = controller_get_analog(CONTROLLER_MASTER, ANALOG_RIGHT_Y);
-    
-    right *= -1 // Reversing the right motor
-    
-    motor_move(LEFT_FRONT_WHEELS_PORT, left);
-    motor_move(LEFT_BACK_WHEELS_PORT, left);
-    motor_move(RIGHT_FRONT_WHEELS_PORT, right);
-    motor_move(RIGHT_BACK_WHEELS_PORT, right);
+    left_back_wheels.move(master.get_analog(ANALOG_LEFT_Y));
+    right_back_wheels.move(master.get_analog(ANALOG_RIGHT_Y));
+    left_front_wheels.move(master.get_analog(ANALOG_LEFT_Y));
+right_front_wheels.move(master.get_analog(ANALOG_RIGHT_Y));
 	
-    delay(2);
+    pros::delay(2);
 }
 
 void split_arcade_drive() {
-    int power = controller_get_analog(CONTROLLER_MASTER, ANALOG_LEFT_Y);
-    int turn = controller_get_analog(CONTROLLER_MASTER, ANALOG_RIGHT_X);
+    int power = master.get_analog(ANALOG_LEFT_Y);
+    int turn = master.get_analog(ANALOG_RIGHT_X);
     int left = power + turn;
     int right = power - turn;
-    
-    right *= -1 // Reversing the right motor
-    
-    motor_move(LEFT_FRONT_WHEELS_PORT, left);
-    motor_move(LEFT_BACK_WHEELS_PORT, left);
-    motor_move(RIGHT_FRONT_WHEELS_PORT, right);
-    motor_move(RIGHT_BACK_WHEELS_PORT, right);
+    left_back_wheels.move(master.get_analog(left));
+    right_back_wheels.move(master.get_analog(right));
+    left_front_wheels.move(master.get_analog(left));
+    right_front_wheels.move(master.get_analog(right));
    
     delay(2)
 }
