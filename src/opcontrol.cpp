@@ -92,4 +92,6 @@ void claw() {
     } else {
         claw_motor.move_velocity(0);
     }
+
+    pros::delay(20);
 }
