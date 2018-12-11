@@ -36,6 +36,11 @@
 
 #include "api.h"
 
+#define LEFT_FRONT_WHEELS_PORT 1
+#define RIGHT_FRONT_WHEELS_PORT 2
+#define LEFT_BACK_WHEELS_PORT 3
+#define RIGHT_BACK_WHEELS_PORT 4
+
 /**
  * You should add more #includes here
  */

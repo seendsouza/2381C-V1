@@ -11,4 +11,30 @@
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+void autonomous() {
+    pros::Motor left_front_wheels (LEFT_FRONT_WHEELS_PORT);
+    pros::Motor right_front_wheels (RIGHT_FRONT_WHEELS_PORT);
+    pros::Motor left_back_wheels (LEFT_BACK_WHEELS_PORT);
+    pros::Motor right_back_wheels (RIGHT_BACK_WHEELS_PORT);
+    pros::Controller master (CONTROLLER_MASTER);
+    
+    parking_from_start();
+}
+void parking_from_start() {
+    int drive_forward = 1000;
+    int drive_left = 1000;
+    int drive_forward_2 = 1000;
+
+    left_back_wheels.move(drive_forward);
+    right_back_wheels.move(drive_forward);
+    left_front_wheels.move(drive_forward);
+    right_front_wheels.move(drive_forward);
+
+    right_back_wheels.move(drive_left);
+    right_front_wheels.move(drive_left);
+
+    left_back_wheels.move(drive_forward_2);
+    right_back_wheels.move(drive_forward_2);
+    left_front_wheels.move(drive_forward_2);
+    right_front_wheels.move(drive_forward_2);
+}

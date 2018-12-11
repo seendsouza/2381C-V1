@@ -49,7 +49,7 @@ void tank_drive() {
     left_front_wheels.move(master.get_analog(ANALOG_LEFT_Y));
 right_front_wheels.move(master.get_analog(ANALOG_RIGHT_Y));
 	
-    pros::delay(2);
+    pros::delay(20);
 }
 
 void split_arcade_drive() {
@@ -62,7 +62,7 @@ void split_arcade_drive() {
     left_front_wheels.move(master.get_analog(left));
     right_front_wheels.move(master.get_analog(right));
    
-    pros::delay(2);
+    pros::delay(20);
 }
 
 void arcade_drive() {
@@ -75,5 +75,5 @@ void arcade_drive() {
     left_front_wheels.move(master.get_analog(left));
     right_front_wheels.move(master.get_analog(right));
 
-    pros::delay(2);
+    pros::delay(20);
 }
