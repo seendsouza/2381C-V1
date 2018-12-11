@@ -17,10 +17,7 @@ void autonomous() {
     pros::Motor left_back_wheels (LEFT_BACK_WHEELS_PORT);
     pros::Motor right_back_wheels (RIGHT_BACK_WHEELS_PORT);
     pros::Controller master (CONTROLLER_MASTER);
-    
-    parking_from_start();
-}
-void parking_from_start() {
+
     int drive_forward = 1000;
     int drive_left = 1000;
     int drive_forward_2 = 1000;
