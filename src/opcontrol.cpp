@@ -62,5 +62,5 @@ void split_arcade_drive() {
     left_front_wheels.move(master.get_analog(left));
     right_front_wheels.move(master.get_analog(right));
    
-    delay(2)
+    pros::delay(2)
 }
