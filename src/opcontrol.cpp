@@ -14,11 +14,6 @@
  * task, not resume it from where it left off.
  */
 
-#define LEFT_FRONT_WHEELS_PORT 1
-#define RIGHT_FRONT_WHEELS_PORT 2
-#define LEFT_BACK_WHEELS_PORT 3
-#define RIGHT_BACK_WHEELS_PORT 4
-
 /* Drive Types:
  * 0 is Tank Drive
  * 1 is Split Arcade Drive
@@ -32,13 +27,18 @@ void opcontrol () {
     pros::Motor right_front_wheels (RIGHT_FRONT_WHEELS_PORT);
     pros::Motor left_back_wheels (LEFT_BACK_WHEELS_PORT);
     pros::Motor right_back_wheels (RIGHT_BACK_WHEELS_PORT);
-    pros::Controller master (CONTROLLER_MASTER):
+    pros::Controller master (CONTROLLER_MASTER);
     
     while (true) {
+        //dev if statement (will be removed at comp)
         if (drive_type == 0){
-            tank_drive()
+            tank_drive();
         } else if (drive_type == 1) {
-            split_arcade_drive()
+            split_arcade_drive();
+        } else if (drive_type == 2) {
+            arcade_drive();
+        } else {
+            tank_drive();
         }
     }
 }
@@ -62,5 +62,18 @@ void split_arcade_drive() {
     left_front_wheels.move(master.get_analog(left));
     right_front_wheels.move(master.get_analog(right));
    
-    pros::delay(2)
+    pros::delay(2);
+}
+
+void arcade_drive() {
+    int power = master.get_analog(ANALOG_LEFT_Y);
+    int turn = master.get_analog(ANALOG_LEFT_X);
+    int left = power + turn;
+    int right = power - turn;
+    left_back_wheels.move(master.get_analog(left));
+    right_back_wheels.move(master.get_analog(right));
+    left_front_wheels.move(master.get_analog(left));
+    right_front_wheels.move(master.get_analog(right));
+
+    pros::delay(2);
 }
