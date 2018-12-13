@@ -4,7 +4,7 @@ void on_center_button() {
 	static bool pressed = false;
 	pressed = !pressed;
 	if (pressed) {
-		pros::lcd::set_text(2, "I was pressed!");
+		pros::lcd::set_text(2, "Press again to pay respects.");
 	} else {
 		pros::lcd::clear_line(2);
 	}
@@ -18,9 +18,19 @@ void on_center_button() {
  */
 void initialize() {
 	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Hello PROS User!");
+	pros::lcd::set_text(1, "Hello 2381C!");
 
 	pros::lcd::register_btn1_cb(on_center_button);
+
+    pros::Motor left_front_wheels_initializer (LEFT_FRONT_WHEELS_PORT);
+    pros::Motor right_front_wheels_initializer (RIGHT_FRONT_WHEELS_PORT, true);
+    pros::Motor left_back_wheels_initializer (LEFT_BACK_WHEELS_PORT);
+    pros::Motor right_back_wheels_initializer (RIGHT_BACK_WHEELS_PORT, true);
+    pros::Motor lift_left_motor_initializer (LEFT_LIFT_PORT, MOTOR_GEARSET_18); // The arm motor has the 200 rpm gearset
+    pros::Motor lift_right_motor_initializer (RIGHT_LIFT_PORT, MOTOR_GEARSET_18, true); // The arm motor has the 200 rpm gearset
+    pros::Motor claw_motor_initializer (CLAW_PORT, MOTOR_GEARSET_18); // The arm motor has the 200 rpm gearset
+    pros::Controller master_initializer (CONTROLLER_MASTER);
+
 }
 
 /**
