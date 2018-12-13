@@ -21,6 +21,30 @@ pros::Motor lift_left_motor (LEFT_LIFT_PORT); // The arm motor has the 200 rpm g
 pros::Motor lift_right_motor (RIGHT_LIFT_PORT); // The arm motor has the 200 rpm gearset
 pros::Motor claw_motor (CLAW_PORT); // The arm motor has the 200 rpm gearset
 pros::Controller master (CONTROLLER_MASTER);
+
+void split_arcade_drive() {
+    int power = master.get_analog(ANALOG_LEFT_Y);
+    int turn = master.get_analog(ANALOG_RIGHT_X);
+    int left = power + turn;
+    int right = power - turn;
+    left_back_wheels.move(master.get_analog(left));
+    right_back_wheels.move(master.get_analog(right));
+    left_front_wheels.move(master.get_analog(left));
+    right_front_wheels.move(master.get_analog(right));
+}
+
+void arcade_drive() {
+    int power = master.get_analog(ANALOG_LEFT_Y);
+    int turn = master.get_analog(ANALOG_LEFT_X);
+    int left = power + turn;
+    int right = power - turn;
+    left_back_wheels.move(master.get_analog(left));                                                                         
+    right_back_wheels.move(master.get_analog(right));
+    left_front_wheels.move(master.get_analog(left));
+    right_front_wheels.move(master.get_analog(right));
+}
+
+
 void opcontrol () {
     
     while (true) {
@@ -49,26 +73,4 @@ void opcontrol () {
         }  
         pros::delay(20);
     }
-}
-
-void split_arcade_drive() {
-    int power = master.get_analog(ANALOG_LEFT_Y);
-    int turn = master.get_analog(ANALOG_RIGHT_X);
-    int left = power + turn;
-    int right = power - turn;
-    left_back_wheels.move(master.get_analog(left));
-    right_back_wheels.move(master.get_analog(right));
-    left_front_wheels.move(master.get_analog(left));
-    right_front_wheels.move(master.get_analog(right));
-}
-
-void arcade_drive() {
-    int power = master.get_analog(ANALOG_LEFT_Y);
-    int turn = master.get_analog(ANALOG_LEFT_X);
-    int left = power + turn;
-    int right = power - turn;
-    left_back_wheels.move(master.get_analog(left));                                                                         
-    right_back_wheels.move(master.get_analog(right));
-    left_front_wheels.move(master.get_analog(left));
-    right_front_wheels.move(master.get_analog(right));
 }
