@@ -21,7 +21,7 @@ void initialize() {
 	pros::lcd::set_text(1, "Hello 2381C!");
 
 	pros::lcd::register_btn1_cb(on_center_button);
-/*
+
     pros::Motor left_front_wheels_initializer (LEFT_FRONT_WHEELS_PORT);
     pros::Motor right_front_wheels_initializer (RIGHT_FRONT_WHEELS_PORT, true);
     pros::Motor left_back_wheels_initializer (LEFT_BACK_WHEELS_PORT);
@@ -30,7 +30,7 @@ void initialize() {
     pros::Motor lift_right_motor_initializer (RIGHT_LIFT_PORT, MOTOR_GEARSET_18, true); // The arm motor has the 200 rpm gearset
     pros::Motor claw_motor_initializer (CLAW_PORT, MOTOR_GEARSET_18); // The arm motor has the 200 rpm gearset
     pros::Controller master_initializer (CONTROLLER_MASTER);
-*/
+
 }
 
 /**

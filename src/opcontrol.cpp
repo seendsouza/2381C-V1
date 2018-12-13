@@ -50,7 +50,7 @@ void opcontrol () {
         pros::delay(20);
     }
 }
-
+/*
 void split_arcade_drive() {
     int power = master.get_analog(ANALOG_LEFT_Y);
     int turn = master.get_analog(ANALOG_RIGHT_X);
@@ -76,3 +76,4 @@ void arcade_drive() {
 
     pros::delay(20);
 }
+*/
