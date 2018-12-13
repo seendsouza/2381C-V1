@@ -44,6 +44,9 @@
 #define RIGHT_LIFT_PORT 6
 #define CLAW_PORT 7
 
+#define REVERSED true
+#define NOT_REVERSED false
+
 /**
  * You should add more #includes here
  */
@@ -58,8 +61,8 @@
  * concurrently! The okapi namespace will export all symbols inside the pros
  * namespace.
  */
-// using namespace pros;
-// using namespace pros::literals;
+//using namespace pros;
+//using namespace pros::literals;
 // using namespace okapi;
 
 /**
@@ -67,6 +70,7 @@
  * that they can be called from user code (i.e. calling autonomous from a
  * button press in opcontrol() for testing purposes).
  */
+
 #ifdef __cplusplus
 extern "C" {
 #endif
