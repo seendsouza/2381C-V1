@@ -22,31 +22,36 @@ void opcontrol () {
     pros::Motor lift_right_motor (RIGHT_LIFT_PORT); // The arm motor has the 200 rpm gearset
     pros::Motor claw_motor (CLAW_PORT); // The arm motor has the 200 rpm gearset
     pros::Controller master (CONTROLLER_MASTER);
-    
+
     while (true) {
         left_back_wheels.move(master.get_analog(ANALOG_LEFT_Y));
         right_back_wheels.move(master.get_analog(ANALOG_RIGHT_Y));
         left_front_wheels.move(master.get_analog(ANALOG_LEFT_Y));
         right_front_wheels.move(master.get_analog(ANALOG_RIGHT_Y));
-       
+
         if (master.get_digital(DIGITAL_R1)) {
-            lift_left_motor.move_velocity(100);
-            lift_right_motor.move_velocity(100);
+            lift_left_motor.move_velocity(160);
+            lift_right_motor.move_velocity(160);
         } else if (master.get_digital(DIGITAL_R2)) {
-            lift_left_motor.move_velocity(-100);
-            lift_right_motor.move_velocity(-100);
+            lift_left_motor.move_velocity(-160);
+            lift_right_motor.move_velocity(-160);
         } else {
             lift_left_motor.move_velocity(0);
             lift_right_motor.move_velocity(0);
         }
-    
+
         if (master.get_digital(DIGITAL_L1)) {
-            claw_motor.move_velocity(100);
+            claw_motor.move_velocity(200);
         } else if (master.get_digital(DIGITAL_L2)) {
-            claw_motor.move_velocity(-100);
+            claw_motor.move_velocity(-200);
         } else {
             claw_motor.move_velocity(0);
-        }  
+        }
+
+
+
+
+
         pros::delay(20);
     }
 }
@@ -69,7 +74,7 @@ void arcade_drive() {
     int turn = master.get_analog(ANALOG_LEFT_X);
     int left = power + turn;
     int right = power - turn;
-    left_back_wheels.move(master.get_analog(left));                                                                         
+    left_back_wheels.move(master.get_analog(left));
     right_back_wheels.move(master.get_analog(right));
     left_front_wheels.move(master.get_analog(left));
     right_front_wheels.move(master.get_analog(right));
