@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include "motorinitialize.cpp"
 /**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -11,13 +11,9 @@
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {
-    pros::Motor left_front_wheels (LEFT_FRONT_WHEELS_PORT);
-    pros::Motor right_front_wheels (RIGHT_FRONT_WHEELS_PORT);
-    pros::Motor left_back_wheels (LEFT_BACK_WHEELS_PORT);
-    pros::Motor right_back_wheels (RIGHT_BACK_WHEELS_PORT);
-    pros::Controller master (CONTROLLER_MASTER);
 
+
+void simple_auton() {
     int drive_forward = 1000;
     int drive_left = 1000;
     int drive_forward_2 = 1000;
@@ -34,4 +30,8 @@ void autonomous() {
     right_back_wheels.move(drive_forward_2);
     left_front_wheels.move(drive_forward_2);
     right_front_wheels.move(drive_forward_2);
+}
+
+void autonomous() {
+    simple_auton();
 }
