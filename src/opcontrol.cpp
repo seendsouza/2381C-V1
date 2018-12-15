@@ -53,11 +53,12 @@ void arcade_drive() {
 void opcontrol () {
 
     while (true) {
-        arcade_drive();
-/*         if (master.get_digital(DIGITAL_A)) {
+        tank_drive();
+
+        if (master.get_digital(DIGITAL_A)) {
            autonomous(); 
         }
-*/
+
         if (master.get_digital(DIGITAL_R1)) {
             lift_left_motor.move_velocity(160);
             lift_right_motor.move_velocity(160);

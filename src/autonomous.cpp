@@ -18,7 +18,7 @@
 void autonomous() {
 
     int drive_forward = 4000; //drive distance
-    int drive_backward = 1200;
+    int drive_backward = -700;
     int drive_left = 300;
     int drive_forward_2 = 1000;
 
@@ -27,23 +27,29 @@ void autonomous() {
     left_front_wheels.move_relative(drive_forward, 100);
     right_front_wheels.move_relative(drive_forward, 100);
 
-    while (right_front_wheels.get_position()-drive_forward > 5 && left_front_wheels.get_position()-drive_forward > 5 ) {
-        pros::delay(2);
-    }
 
     left_back_wheels.tare_position(); // set motor position to zero
     right_back_wheels.tare_position();
     left_front_wheels.tare_position();
     right_front_wheels.tare_position();
 
+    left_back_wheels.move_relative(drive_backward, 100); //drive forward 100 tick at 100 rpm
+    right_back_wheels.move_relative(drive_backward, 100);
+    left_front_wheels.move_relative(drive_backward, 100);
+    right_front_wheels.move_relative(drive_backward, 100);
+
+
+    left_back_wheels.tare_position(); // set motor position to zero
+    right_back_wheels.tare_position();
+    left_front_wheels.tare_position();
+    right_front_wheels.tare_position();
+
+
     right_front_wheels.move_relative(drive_left, 100); //turn left
     right_back_wheels.move_relative(drive_left, 100);
-    left_back_wheels.move_relative(-drive_left, 100);
-    left_front_wheels.move_relative(-drive_left, 100);
+    left_back_wheels.move_relative(-drive_left, -100);
+    left_front_wheels.move_relative(-drive_left, -100);
 
-    while (right_front_wheels.get_position()-drive_left > 5 && left_front_wheels.get_position() + drive_left > 5 ) {
-        pros::delay(2);
-    }
 
     left_back_wheels.tare_position();
     right_back_wheels.tare_position();
@@ -55,7 +61,4 @@ void autonomous() {
     left_front_wheels.move_relative(drive_forward, 100);
     right_front_wheels.move_relative(drive_forward, 100);
 
-    while (right_front_wheels.get_position()-drive_forward_2 > 5 && left_front_wheels.get_position()-drive_forward_2 > 5 ) {
-        pros::delay(2);
-    }
 }
