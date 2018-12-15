@@ -1,5 +1,5 @@
 #include "main.h"
-#ifndef
+#ifndef global
 #include "global.h"
 #endif
 
