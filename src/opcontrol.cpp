@@ -2,6 +2,7 @@
 #ifndef global
 #include "global.h"
 #endif
+
 /**
  * Runs the operator control code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -16,15 +17,47 @@
  * task, not resume it from where it left off.
  */
 
-
-void opcontrol () {
-
-    while (true) {
+void tank_drive() {
         left_back_wheels.move(master.get_analog(ANALOG_LEFT_Y));
         right_back_wheels.move(master.get_analog(ANALOG_RIGHT_Y));
         left_front_wheels.move(master.get_analog(ANALOG_LEFT_Y));
         right_front_wheels.move(master.get_analog(ANALOG_RIGHT_Y));
+}
 
+void split_arcade_drive() {
+    int power = master.get_analog(ANALOG_LEFT_Y);
+    int turn = master.get_analog(ANALOG_RIGHT_X);
+    int left = power + turn;
+    int right = power - turn;
+    left_back_wheels.move(left);
+    right_back_wheels.move(right);
+    left_front_wheels.move(left);
+    right_front_wheels.move(right);
+
+    pros::delay(20);
+}
+
+void arcade_drive() {
+    int power = master.get_analog(ANALOG_LEFT_Y);
+    int turn = master.get_analog(ANALOG_LEFT_X);
+    int left = power + turn;
+    int right = power - turn;
+    left_back_wheels.move(left);
+    right_back_wheels.move(right);
+    left_front_wheels.move(left);
+    right_front_wheels.move(right);
+
+    pros::delay(20);
+}
+
+void opcontrol () {
+
+    while (true) {
+        arcade_drive();
+/*         if (master.get_digital(DIGITAL_A)) {
+           autonomous(); 
+        }
+*/
         if (master.get_digital(DIGITAL_R1)) {
             lift_left_motor.move_velocity(160);
             lift_right_motor.move_velocity(160);
@@ -44,37 +77,7 @@ void opcontrol () {
             claw_motor.move_velocity(0);
         }
 
-
-
-
-
         pros::delay(20);
     }
 }
-/*
-void split_arcade_drive() {
-    int power = master.get_analog(ANALOG_LEFT_Y);
-    int turn = master.get_analog(ANALOG_RIGHT_X);
-    int left = power + turn;
-    int right = power - turn;
-    left_back_wheels.move(master.get_analog(left));
-    right_back_wheels.move(master.get_analog(right));
-    left_front_wheels.move(master.get_analog(left));
-    right_front_wheels.move(master.get_analog(right));
 
-    pros::delay(20);
-}
-
-void arcade_drive() {
-    int power = master.get_analog(ANALOG_LEFT_Y);
-    int turn = master.get_analog(ANALOG_LEFT_X);
-    int left = power + turn;
-    int right = power - turn;
-    left_back_wheels.move(master.get_analog(left));
-    right_back_wheels.move(master.get_analog(right));
-    left_front_wheels.move(master.get_analog(left));
-    right_front_wheels.move(master.get_analog(right));
-
-    pros::delay(20);
-}
-*/

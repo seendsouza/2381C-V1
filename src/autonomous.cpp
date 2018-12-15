@@ -17,7 +17,8 @@
 
 void autonomous() {
 
-    int drive_forward = 2800; //drive distance
+    int drive_forward = 4000; //drive distance
+    int drive_backward = 1200;
     int drive_left = 300;
     int drive_forward_2 = 1000;
 
