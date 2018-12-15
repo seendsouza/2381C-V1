@@ -36,16 +36,13 @@
 
 #include "api.h"
 
-#define LEFT_FRONT_WHEELS_PORT 11
+#define LEFT_FRONT_WHEELS_PORT 11                                                                                           
 #define RIGHT_FRONT_WHEELS_PORT 12
 #define LEFT_BACK_WHEELS_PORT 20
 #define RIGHT_BACK_WHEELS_PORT 19
-#define LEFT_LIFT_PORT 13
-#define RIGHT_LIFT_PORT 14
-#define CLAW_PORT 2
-
-#define REVERSED true
-#define NOT_REVERSED false
+#define LEFT_LIFT_PORT 15
+#define RIGHT_LIFT_PORT 16
+#define CLAW_PORT 4
 
 /**
  * You should add more #includes here

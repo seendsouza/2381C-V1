@@ -33,8 +33,6 @@ void split_arcade_drive() {
     right_back_wheels.move(right);
     left_front_wheels.move(left);
     right_front_wheels.move(right);
-
-    pros::delay(20);
 }
 
 void arcade_drive() {
@@ -46,19 +44,18 @@ void arcade_drive() {
     right_back_wheels.move(right);
     left_front_wheels.move(left);
     right_front_wheels.move(right);
-
-    pros::delay(20);
 }
 
 void opcontrol () {
 
     while (true) {
-        tank_drive();
 
+        tank_drive();
+/*
         if (master.get_digital(DIGITAL_A)) {
            autonomous(); 
         }
-
+*/
         if (master.get_digital(DIGITAL_R1)) {
             lift_left_motor.move_velocity(160);
             lift_right_motor.move_velocity(160);

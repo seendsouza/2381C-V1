@@ -17,7 +17,7 @@
 
 void autonomous() {
 
-    int drive_forward = 4000; //drive distance
+    int drive_forward = 3500; //drive distance
     int drive_backward = -700;
     int drive_left = 300;
     int drive_forward_2 = 1000;
@@ -32,7 +32,7 @@ void autonomous() {
     right_back_wheels.tare_position();
     left_front_wheels.tare_position();
     right_front_wheels.tare_position();
-
+/*
     left_back_wheels.move_relative(drive_backward, 100); //drive forward 100 tick at 100 rpm
     right_back_wheels.move_relative(drive_backward, 100);
     left_front_wheels.move_relative(drive_backward, 100);
@@ -60,5 +60,5 @@ void autonomous() {
     right_back_wheels.move_relative(drive_forward, 100);
     left_front_wheels.move_relative(drive_forward, 100);
     right_front_wheels.move_relative(drive_forward, 100);
-
+*/
 }
