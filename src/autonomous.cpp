@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include "global.h"
 /**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -12,16 +12,12 @@
  * from where it left off.
  */
 
-void autonomous() {
-    pros::Motor left_front_wheels (LEFT_FRONT_WHEELS_PORT);
-    pros::Motor right_front_wheels (RIGHT_FRONT_WHEELS_PORT);
-    pros::Motor left_back_wheels (LEFT_BACK_WHEELS_PORT);
-    pros::Motor right_back_wheels (RIGHT_BACK_WHEELS_PORT);
-    pros::Controller master (CONTROLLER_MASTER);
 
-    int drive_forward = 100; //drive distance
-    int drive_left = 100;
-    int drive_forward_2 = 100;
+void autonomous() {
+
+    int drive_forward = 2800; //drive distance
+    int drive_left = 300;
+    int drive_forward_2 = 1000;
 
     left_back_wheels.move_relative(drive_forward, 100); //drive forward 100 tick at 100 rpm
     right_back_wheels.move_relative(drive_forward, 100);
