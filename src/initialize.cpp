@@ -1,4 +1,7 @@
 #include "main.h"
+#ifndef
+#include "global.h"
+#endif
 
 void on_center_button() {
 	static bool pressed = false;
