@@ -22,14 +22,6 @@ void initialize() {
 
 	pros::lcd::register_btn1_cb(on_center_button);
 
-    pros::Motor left_front_wheels_initializer (LEFT_FRONT_WHEELS_PORT);
-    pros::Motor right_front_wheels_initializer (RIGHT_FRONT_WHEELS_PORT, true);
-    pros::Motor left_back_wheels_initializer (LEFT_BACK_WHEELS_PORT);
-    pros::Motor right_back_wheels_initializer (RIGHT_BACK_WHEELS_PORT, true);
-    pros::Motor lift_left_motor_initializer (LEFT_LIFT_PORT, MOTOR_GEARSET_18); // The arm motor has the 200 rpm gearset
-    pros::Motor lift_right_motor_initializer (RIGHT_LIFT_PORT, MOTOR_GEARSET_18, true); // The arm motor has the 200 rpm gearset
-    pros::Motor claw_motor_initializer (CLAW_PORT, MOTOR_GEARSET_18); // The arm motor has the 200 rpm gearset
-    pros::Controller master_initializer (CONTROLLER_MASTER);
 
 }
 
