@@ -4,7 +4,7 @@
 #define RIGHT_BACK_WHEELS_PORT 19
 #define LEFT_LIFT_PORT 13
 #define RIGHT_LIFT_PORT 14
-#define CLAW_PORT 2
+#define CLAW_PORT 3
 
 #define REVERSED true
 #define NOT_REVERSED false
