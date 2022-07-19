@@ -3,3 +3,6 @@ firmware/** linguist-vendored
 include/** linguist-vendored
 include/global.h linguist-vendored=false
 include/main.h linguist-vendored=false
+common.mk linguist-vendored
+Makefile linguist-vendored
+project.pros linguist-vendored
