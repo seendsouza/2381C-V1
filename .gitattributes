@@ -1,0 +1,5 @@
+bin/* linguist-vendored
+firmware/* linguist-vendored
+include/* linguist-vendored
+include/global.h linguist-vendored=false
+include/main.h linguist-vendored=false
